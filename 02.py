@@ -101,12 +101,12 @@
 # np.random.randint(46, size=(2, 5))
 # print(np.random.randint(46, size=(2, 5)))
 
-a = np.arange(4)
-print("a = ",a)
-b = np.arange(4, 8)
-print("b = ",b) 
-print("np.vstack([a,b}) =",np.vstack([a, b]))
-print("np.hstack([a,b}) = ",np.vstack([a, b]))
+# a = np.arange(4)
+# print("a = ",a)
+# b = np.arange(4, 8)
+# print("b = ",b) 
+# print("np.vstack([a,b}) =",np.vstack([a, b]))
+# print("np.hstack([a,b}) = ",np.vstack([a, b]))
 
 
 # gpt 의 작동 
@@ -119,3 +119,4 @@ print("np.hstack([a,b}) = ",np.vstack([a, b]))
 # 슬라이싱 -> 데이터를 잘라서 가져올 수 있는 방법
 
 # 수정이 안되야되는 로그 데이터는 튜플로 적용 
+# 

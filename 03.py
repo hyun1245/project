@@ -297,3 +297,4 @@ s = Series(data=data, index=index)
 # print('오름차순 = ',s.rank())
 
 # print('내림차순 = ',s.rank(ascending=False, method='min'))
+#

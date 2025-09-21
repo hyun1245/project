@@ -46,3 +46,4 @@ arr = np.where(arr > 10, 1, 0)
 arr = np.arange(8).reshape(4, 2)
 print(arr.sum(axis=0)) # 열끼리 더함
 print(arr.sum(axis=1)) # 행끼리 더함  
+
