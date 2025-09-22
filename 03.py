@@ -1,8 +1,9 @@
 from pandas import Series
 
-#data - [10,20,30]
-# s = Series(data)
-# print(s)
+data - [10,20,30]
+# 레이블(label)이 붙은 1차원 배열
+s = Series(data)
+print(s)
 
 import numpy as np
 

@@ -1,14 +1,18 @@
-#import numpy as np # 패키지를 설치할때 아나콘다의 open terminal에서 pip install numpy 입력
-#data = [1,2,3]
-#arr = np.array(data)
-#print(arr)
-#print(type(arr)) 
+# # 패키지를 설치할때 아나콘다의 open terminal에서 pip install numpy 입력
+# import numpy as np 
+
+# data = [1,2,3]
+# #numpy 배열로 변환하는 array 함수
+# arr = np.array(data)
+# print(arr)
+# #arr 의 데이터 타입을 출력하는 코드
+# print(type(arr)) 
 
 # data = [1,2,3]
 
 # result = [10]
 # for i in data:
-#     result.append(i*10)
+#     result.append(i*10) #기존 리스트 마지막 항목에 i*10 을 추가
 #     print("for result = ",result)
 
 # print("final result = ",result)
@@ -19,10 +23,12 @@
 # print("fianal result = ",result)
 
 # import numpy as np
-# arr = np.arange(20).reshape(4, 5)
+# arr = np.arange(20).reshape(4, 5) # 0~19 까지의 숫자를 4행 5열로 변환
 # print(arr)
 # print(arr[:3])
 
+# # result 를 [] 라는 공백으로 지정하고 row_01 이라는 변수를 만들어 
+# # 이안에 row의 각 0,1 번째 해당하는 값을 총 행의 개수인 4번 반복하여 리스트를 구성한다
 # result =[]
 # for row in arr:
 #     row_01 = [row[0], row[1]]
@@ -33,9 +39,10 @@
 
 # print(arr[:,:2]) # 4개의 행을 전부 가져오고 2번째 까지의 열을 가져온다
 
-# print(arr[0:4, 2:5]) # 0~4행 , #3~5열 
+# print(arr[0:4, 2:5]) # 0~3행 , #2~4열 
 # print(arr[:4, 2:])
 
+import numpy as np
 # a = np.array([1,2,3])
 # b = np.array([2,3,4])
 
@@ -44,7 +51,7 @@
 
 # print("a + b = ", a + b)
 # print("a * b = ", a * b)
-# print("a % b = ", a % b)
+# print("a % b = ", a / b)
 
 # print("a + 10 = ", a + 10)
 
@@ -67,46 +74,50 @@
 # ]
 # arr = np.array(data)
 # print("arr = ",arr)
-# # print(arr[0] * 3 + arr[1]  * 2)
+# 첫번째 행의 값 * 3 + 두번째 행의 값 * 2
+# print(arr[0] * 3 + arr[1]  * 2) 
 
 # weight = np.array([3, 2]).reshape(2, 1)
-# print("weight = ",weight)   
-# print((weight * arr).sum(axis=0)) # axis = 0 이면 x축 , axix = 1 이면 y 축
+# print("weight = ",weight)
+# # axis = 0 이면 행방향(x축)[각 열의 합계] , axix = 1 이면 열방향(y축)[각 행의 합계]   
+# print((weight * arr).sum(axis=0)) 
 
 # arr = np.array( [10, 20, 30] )
+# #조건에 맞는값은 True, 아니면 False
 # print(arr > 10)
 
 # arr = np.array([10, 20, 30])
 # cond = [False, True, True]
+# #arr(cond) 는 arr 에서 cond 가 True 인 값만 출력
 # print(arr[ cond ])
 
 # arr = np.array([10, 20, 30])
-# cond0 = arr > 10
+# cond0 = arr > 10 # 10 초과의 값은 True
 # print("cond0 = ",cond0)
-# cond1 = arr < 30
+# cond1 = arr < 30 # 30 미만의 값은 True
 # print("cond1 = ",cond1)
-# print("cond0 & cond1 = ", cond0 & cond1) # and
+# print("cond0 & cond1 = ", cond0 & cond1) # and 둘다 조건 복합 적용 (10 < arr < 30)
 # print(arr[cond0 & cond1])
 
 # arr = np.array([10, 20, 30])
 # arr = np.where( arr > 10, 1, 0) # 조건문 10 초과이면 1 아니면 0 
 # print(arr)
 
-# arr = np.arange(8).reshape(4, 2)
+# arr = np.arange(8).reshape(4, 2) # 0~7 까지의 숫자를 4행 2열로 변환
 # print("arr = ",arr)
 
-# print(arr.sum(axis=0)) # 열끼리 더함
-# print(arr.sum(axis=1)) # 행끼리 더함
+# print(arr.sum(axis=0)) # 열끼리 더함(각 값을 행으로 재배열)
+# print(arr.sum(axis=1)) # 행끼리 더함(각 값을 열로 재배열)
 
-# np.random.randint(46, size=(2, 5))
+# np.random.randint(46, size=(2, 5)) # 0~45 까지의 숫자중에서 2행 5열로 랜덤하게 추출
 # print(np.random.randint(46, size=(2, 5)))
 
-# a = np.arange(4)
-# print("a = ",a)
-# b = np.arange(4, 8)
-# print("b = ",b) 
-# print("np.vstack([a,b}) =",np.vstack([a, b]))
-# print("np.hstack([a,b}) = ",np.vstack([a, b]))
+# a = np.arange(4) # 0~3 까지의 숫자를 1차원 배열로 생성
+# print("a = ",a) # a =  [0 1 2 3]
+# b = np.arange(4, 8) # 4~7 까지의 숫자를 1차원 배열로 생성
+# print("b = ",b) # b =  [4 5 6 7]
+# print("np.vstack([a,b}) =",np.vstack([a, b])) # 수직방향으로 쌓기
+# print("np.hstack([a,b}) = ",np.hstack([a, b])) # 수평방향으로 쌓기
 
 
 # gpt 의 작동 
