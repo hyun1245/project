@@ -1,15 +1,15 @@
 from pandas import Series
 
-data - [10,20,30]
-# 레이블(label)이 붙은 1차원 배열
-s = Series(data)
-print(s)
+# data = [10,20,30]
+# # 레이블(label)[행 번호]이 붙은 1차원 배열
+# s = Series(data)
+# print(s)
 
 import numpy as np
 
-# data = np.arange(S)
-#s = Series(data)
-#print(s)
+# data = np.arange(3) #3보다 작은 정수 (0,1,2)를 1차원으로 배열 
+# s = Series(data)
+# print(s)
 
 # data = ["시가","고가"]
 # s = Series(data)
@@ -22,14 +22,21 @@ import numpy as np
 # print(s)
 
 # data = [1000, 2000, 3000]
-# s = Series(data)
+# # pandas의 Series 객체로 변환. 인덱스는 기본값인 0, 1, 2 자동 생성됨.
+# s = Series(data) 
+# print(s)
+
+# # Series의 인덱스 정보를 출력. 기본은 RangeIndex(start=0, stop=3, step=1)
 # print('s.index:',s.index)
-# print('s.index.to_list):',s.index.to_list())
+
+# # 인덱스를 리스트로 변환하여 출력. [0, 1, 2]가 반환됨  
+# print('s.index.to_list():',s.index.to_list())
 
 # data = [1000, 2000, 3000] 
 # s = Series(data)
 # s.index = ["메로나", "구구콘", "하겐다즈"]
 # print(s)
+# print(s.index)
 
 
 # data = [1000, 2000, 3000]
@@ -37,7 +44,7 @@ import numpy as np
 
 # #컨트롤 + 마우스를 클릭하면 해당함수의 소스를 분석할 수 있다.
 # #명시적으로 index를 지정
-# s = Series(data = data_1, index = index) 
+# s = Series(data = data, index = index) 
 # print(s) 
 
 # k = [1000, 2000, 3000]
@@ -59,11 +66,14 @@ import numpy as np
 
 # print("s = ", s)
 
+# # reindex는 Series의 인덱스를 변경하거나 재배열할 때 사용한다.
+# # 존재하지 않는 인덱스를 지정하면 NaN으로 표시
 # s2 = s.reindex(["메로나", "비비빅", "구구콘"])
 # print('s2 = ',s2)
 
 # price = [42500,42550,41800,42550,42650]
-# date = ["2019-a05-31", "2019-05-30", "2019-05-29", "2019-05-28", "2019-05-27"]
+# date = ["2019-05-31", "2019-05-30", "2019-05-29", "2019-05-28", "2019-05-27"]
+# #default Series(data, index)
 # s = Series(price, date)
 # print(s) 
 
@@ -77,23 +87,30 @@ import numpy as np
 # s = Series(data)
 # print(s)
 
-# print(s.index)
+# print(s.index) # index 출력
 # print(s.index.dtype)
 
-# print(s.values)
+# print(s.values) # data 출력
 
 # data =[1000,2000,3000]
 # s = Series(data)
 
+# print(s)
+
+# 인덱싱이기 떄문에 인덱스의 값만 가져옴
+
+# s.iloc ->  data 기반(인덱스 라벨과 상관없이 데이터가 저장된 순서(위치)를 기준으로 선택)
 # print('s.iloc[0] = ',s.iloc[0])
 # print('s.iloc[1] = ',s.iloc[1])
 # print('s.iloc[2] = ',s.iloc[2])
-# print('s.iloc[-1] = ',s.iloc[-1])
+# print('s.iloc[-1] = ',s.iloc[-1]) # 끝에서부터 값을 가져오는 방법 -1
+# print('s.iloc[-2] = ',s.iloc[-2]) # 끝에서부터 두번째 값을 가져오는 방법 -2
 
+# s.loc -> 인덱스 기반(인덱스(라벨)을 이용해 선택)
 # print(s.loc[0])
 # print(s.loc[1])
 # print(s.loc[2])
-# print(s.loc[-1]) #에러
+# print(s.loc[-1]) #에러(위치 기반인 s.iloc은 인식 할 수있지만 s.loc는 인식 못함)
 
 # data = [1000,2000,3000]
 # index = ['메로나', '구구콘', '하겐다즈']
@@ -104,12 +121,13 @@ import numpy as np
 # print(s.loc['구구콘'])
 
 # print(s['메로나'])
-# print(s[0])
+# print(s[0]) #경고 발생 가능, 위치가 아닌 라벨로 작동 
 
 # data = [1000,2000,3000]
 # index = ['메로나', '구구콘', '하겐다즈']
-# s = Series(data=data, index=index)
-
+# s = Series(data=data, index=index) # 출력결과는 오른쪽이 인덱스 왼쪽이 값이다
+# s = Series(data = index, index = data)
+# print(s)
 # print(s.iloc[0:2])
 
 # data = [1000,2000,3000]
@@ -135,9 +153,9 @@ import numpy as np
 # print('s.loc[indices] =',s.loc[indices])
 # print('s.loc[["메로나", "하겐다즈"]] =',s.loc[['메로나', '하겐다즈']])
 
-data = [1000,2000,3000]
-index = ['메로나', '구구콘', '하겐다즈']
-s = Series(data=data, index=index)
+# data = [1000,2000,3000]
+# index = ['메로나', '구구콘', '하겐다즈']
+# s = Series(data=data, index=index)
 
 # s.loc['메로나'] = 500 #값수정
 # print(s)
@@ -149,7 +167,7 @@ s = Series(data=data, index=index)
 # print('s = ',s)
 
 
-# s = s.drop('메로나')
+# s = s.drop('메로나') # drop은 원본에 영향을 주지 않음
 # print(s)
 
 # 철수 = Series([10,20,30], index = ["NAVER", "SKT", "KT"])
@@ -159,13 +177,13 @@ s = Series(data=data, index=index)
 
 # print(철수 * 30)
 
-# high = Series([42800, 42700, 42050, 42950, 43000])
-# low = Series([42150, 42150, 41300, 42150, 42350])
+high = Series([42800, 42700, 42050, 42950, 43000])
+low = Series([42150, 42150, 41300, 42150, 42350])
 
-# diff = high - low
-# print(diff)
+diff = high - low
+print(diff)
 
-# print(diff.max())
+print(diff.max())
 
 # date = ["6/1", "6/2", "6/3", "6/4", "6/5"]
 # high = Series([42800, 42700, 42050, 42950, 43000], index=date)
