@@ -177,20 +177,24 @@ import numpy as np
 
 # print(철수 * 30)
 
-high = Series([42800, 42700, 42050, 42950, 43000])
-low = Series([42150, 42150, 41300, 42150, 42350])
+# high = Series([42800, 42700, 42050, 42950, 43000])
+# low = Series([42150, 42150, 41300, 42150, 42350])
 
-diff = high - low
-print(diff)
+# diff = high - low
+# print(diff)
 
-print(diff.max())
+# print(diff.max()) #최대값
+# print(diff.min()) #최소값
 
+# # 인덱스로 사용할 날짜 리스트
 # date = ["6/1", "6/2", "6/3", "6/4", "6/5"]
+# # date를 인덱스로 하는 고가(high)와 저가(low) 시리즈 생성
 # high = Series([42800, 42700, 42050, 42950, 43000], index=date)
 # low = Series([42150, 42150, 41300, 42150, 42350] , index=date)
 # diff = high - low
 # # print(diff)
 
+# # 최대 변동폭과 해당위치를 찾기 위해 for문 사용
 # max_idx = 0
 # max_val = 0
 
@@ -198,10 +202,13 @@ print(diff.max())
 #     if diff[i] > max_val:
 #         max_val = diff.iloc[i]
 #         max_idx = i
+# # max_val = diff.iloc[i], max_idx = i: 만약 현재 값이 더 크다면, 
+# # max_val을 새로운 최대값으로 업데이트하고, 그 위치 i를 max_idx에 저장합니다.
 
 # print(max_idx)
 # print(diff.index[max_idx]) 
-# 
+
+
 # print(diff.idxmax()) #최대값의 index를 반환
 # print(diff.idxmin()) #최소값의 index를 반환
 
@@ -209,9 +216,9 @@ print(diff.max())
 # high = Series([42800, 42700, 42050, 42950, 43000], index=date)
 # low = Series([42150, 42150, 41300, 42150, 42350] , index=date)
 # profit = ((high - low)/ low) * 100
-# # print(profit)
+# print(profit)
 
-# print(profit.cumprod()) #누적 수익률
+# print(profit.cumprod()) #누적 수익률(누적 곱)[수익률을 복리로 적용]
 
 # print(profit.cumprod().iloc[-1]) # iloc[-1] -> 가장 최근의 값
 
@@ -226,22 +233,33 @@ print(diff.max())
  
 # print(s.value_counts()) #각각의 값이 몇개씩 있는지
 
-# from pandas import Series
+from pandas import Series
 # s= Series(['1,234','5,678','9,876'])
-# print(int(s))
+# int() -> 단일 숫자나 문자열 값을 정수로 변환하는 함수
+# # 하지만 Series 객체는 여러개의 값을 담고있는 자료구조 로서 에러를 발생 시킴
+# print(int(s)) #정수형으로 변환 
 
+# 함수를 정의할때 사용
+# x 값과 , in function 이라는 문자열을 출력하고
+# x 값을 반환하는 함수
 # def remove_comma(x):
-#     return int(x, 'in function')
+#     print(x, 'in function')
 #     return x
 
+# # s.map(함수)는 "s의 모든 요소(element)를 하나씩 꺼내서, 
+# # 지정된 '함수'에 입력값으로 넣고, 함수가 반환하는 결과값으로 대체하라"는 의미
+# # 이과정을 Mapping 이라고함
 # s = Series(['1,234','5,678','9,876'])
 # result = s.map(remove_comma)
 # print(result)
 
-# from pandas import Series
+from pandas import Series
 
+# # 문자열 x를 입력받아, x 안에 있는 모든 쉼표(,)를 제거한 후,
+# # 정수형(int)로 변환하여 반환하는 함수
+# # .replace("old", "new") -> 문자열에서 old를 new로 바꿔주는 함수
 # def remove_comma(x) :
-#     return int(x.replace(",", ""))
+#     return int(x.replace(",", "")) 
 
 # s = Series(["1,234", "5,678", "9,876"])
 # result = s.map(remove_comma)
@@ -257,32 +275,37 @@ print(diff.max())
 # s = s.map(is_greater_than_5000)
 # print(s)
 
-# from pandas import Series
+from pandas import Series
 
 # data = [42500, 42550, 41800, 42550, 42650]
 # index = ['2019-05-31', '2019-05-30', '2019-05-29', '2019-05-28', '2019-05-27']
 # s = Series(data=data, index=index)
+# # cond = s > 42000: 이 코드는 s Series의 모든 요소에 대해 > 42000이라는 비교 연산을 수행
 # cond = s > 42000
+# # cond 시리즈는 s와 동일한 인덱스를 가지며,
+# # 각 인덱스에 해당하는 값이 42000을 초과하는지에 대한 True/False 값을 가집니다.
 # print(cond)
 
+# ## 불리언 인덱싱(True와 False로 이루어진 불리언(Boolean) 값들을 사용하여 데이터를 걸러내는 방식)의 핵심
+# #  s[cond] -> Series인 cond에서  값이 True인 위치에 해당하는 요소들만 선택
 # print(s[cond])
 
-# close = [42500, 42550, 41800, 42550, 42650]
-# open = [42600, 42200, 41850, 42550, 42500]
-# index = ['2019-05-31', '2019-05-30', '2019-05-29', '2019-05-28', '2019-05-27']
+close = [42500, 42550, 41800, 42550, 42650] #종가
+open = [42600, 42200, 41850, 42550, 42500] #시가
+index = ['2019-05-31', '2019-05-30', '2019-05-29', '2019-05-28', '2019-05-27']
 
-# open = Series(data=open, index=index)
-# close = Series(data=close, index=index)
+open = Series(data=open, index=index)
+close = Series(data=close, index=index)
 
-# cond = close > open
+# cond = close > open #종가가 시가보다 큰지
 # print(cond)
 
 # cond = close > open
 # print(close[cond])
 
-# print(close[close > open])
+# print(close[close > open]) # print(close[cond])와 동일한 함수
 
-# print(close.index[close > open])
+# print(close.index[close > open]) # print(close[close > open].index) 와 동일한 함수
 # print(close[close > open].index)
 
 # close = [42500, 42550, 41800, 42550, 42650]
@@ -292,9 +315,9 @@ print(diff.max())
 # open = Series(data=open, index=index)
 # close = Series(data=close, index=index)
 # diff = close - open
-# print(diff[close > open])
+# print(diff[close > open]) #종가가 시가보다 큰날의 변동폭의 차 를 출력
 
-# from pandas import Series
+from pandas import Series
 
 # data = [3.1, 2.0, 10.1, 5.1]
 # index = ['000010', '000020', '000030', '000040']
@@ -305,7 +328,7 @@ print(diff.max())
 # s1 = s.sort_values()
 # print('오름 =',s1)
 
-# # 정렬 (내림차순)
+# 정렬 (내림차순)
 # s2 = s.sort_values(ascending=False)
 # print('내림 =',s2)
 
