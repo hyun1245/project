@@ -101,17 +101,17 @@ from pandas import DataFrame
 # print(df.loc[["037730","036360"]])
 # print(df.iloc[[0,2]])
 
-from pandas import DataFrame
+# from pandas import DataFrame
 
-data = [
-    ["3R", 1510, 7.36],
-    ["3SOFT", 1790, 1.65],
-    ["ACTS", 1185, 1.28]
-]
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
 
-index = ["037730", "036360", "005760"]
-columns = ["종목명", "현재가", "등락률"]
-df = DataFrame(data=data, index=index, columns=columns)
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
 
 # print(df.iloc[0])
 # print(df.loc['037730'])
@@ -127,3 +127,22 @@ df = DataFrame(data=data, index=index, columns=columns)
 
 # print(df.loc["037730"].loc["현재가"])  # 시리즈 인덱스 
 # print(df.loc["037730"]["현재가"])      # 시리즈 인덱스
+
+from pandas import DataFrame
+
+data = [
+    ["3R", 1510, 7.36],
+    ["3SOFT", 1790, 1.65],
+    ["ACTS", 1185, 1.28]
+]
+
+index = ["037730", "036360", "005760"]
+columns = ["종목명", "현재가", "등락률"]
+df = DataFrame(data=data, index=index, columns=columns)
+
+# 괄호가 2개이면 Series 형태가 아닌 DataFrame 형태로 나옴
+# print(df.loc[["037730", "036360"]]) 
+# print(df.iloc[[0, 1]])
+
+print(df.loc[["037730", "036360"], ["종목명", "현재가"]]) #DataFrame
+print(df.iloc[ [0, 1], [0, 1] ])
