@@ -128,21 +128,262 @@ from pandas import DataFrame
 # print(df.loc["037730"].loc["현재가"])  # 시리즈 인덱스 
 # print(df.loc["037730"]["현재가"])      # 시리즈 인덱스
 
-from pandas import DataFrame
+# from pandas import DataFrame
 
-data = [
-    ["3R", 1510, 7.36],
-    ["3SOFT", 1790, 1.65],
-    ["ACTS", 1185, 1.28]
-]
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
 
-index = ["037730", "036360", "005760"]
-columns = ["종목명", "현재가", "등락률"]
-df = DataFrame(data=data, index=index, columns=columns)
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
 
 # 괄호가 2개이면 Series 형태가 아닌 DataFrame 형태로 나옴
 # print(df.loc[["037730", "036360"]]) 
 # print(df.iloc[[0, 1]])
 
-print(df.loc[["037730", "036360"], ["종목명", "현재가"]]) #DataFrame
-print(df.iloc[ [0, 1], [0, 1] ])
+# print(df.loc[["037730", "036360"], ["종목명", "현재가"]]) #DataFrame
+# print(df.iloc[ [0, 1], [0, 1] ])
+
+# from pandas import DataFrame
+
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
+
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
+# # print(df)
+
+# cond = df['현재가'] >= 1400
+
+# # print("cond = ", cond)
+
+# # print(df.loc[cond])
+
+# cond = df['현재가'] >= 1400
+# # print(df.loc[cond]["현재가"])
+
+# # print(df.loc[cond, "현재가"])
+
+# # & 연산자를 사용할때는 괄호로 묶어줘야함
+# cond = (df['현재가'] >= 1400) & (df['현재가'] < 1700) #파이썬에서는 and 이지만 pandas에서는 & 로 사용
+# print(df.loc[cond])
+# # print(df.loc[~cond]) # ~ 는 not 의 의미
+
+# from pandas import DataFrame
+
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
+
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
+
+# # print(df)
+
+# from pandas import Series 
+
+# s = Series(data=[1600, 1600, 1600], index=df.index) # 열을 하나 추가하는 코드
+# df['목표가'] = s # 열의 이름이 '목표가' 로 추가됨
+# # print(df)
+
+# df["괴리율"] = (df["목표가"] - df["현재가"]) / df['현재가']
+# # print(df)
+
+# from pandas import DataFrame
+
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
+
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
+# # print(df)
+
+# from pandas import Series 
+
+# s = Series(data=["LG전자", 60000, 3.84], index=df.columns) # 행을 하나더 추가
+# df.loc["066570"] = s
+# # print(df)
+
+# s = Series(data=["LG전자", 60000, 3.84], index=df.columns, name="066570") #name 으로 행이름 지정
+# # print(df.append(s))
+
+
+# from pandas import DataFrame
+
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
+
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
+
+# new_df = df.drop("현재가", axis=1) # axis=1 은 열(y축)을 의미, axis=0 은 행(x축)을 의미
+# # print(df)
+# # print(new_df)
+
+# from pandas import DataFrame
+
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
+
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
+
+# # print(df.columns)
+# # print(df.index)
+
+# df.columns = ['name', 'close', 'fluctuation']
+# df.index.name = 'code'
+# # print(df)
+
+# from pandas import DataFrame
+
+# data = [
+#     ["3R", 1510, 7.36],
+#     ["3SOFT", 1790, 1.65],
+#     ["ACTS", 1185, 1.28]
+# ]
+
+# index = ["037730", "036360", "005760"]
+# columns = ["종목명", "현재가", "등락률"]
+# df = DataFrame(data=data, index=index, columns=columns)
+# df.rename(columns={'종목명': 'code'}, inplace=True) #특정 열의 이름만 바꾸고 싶을때, inplace=True 로 원본에 반영
+# # print(df)
+
+# from pandas import DataFrame
+
+# # "" 가 포함된것은 문자열로 지정
+# data = [
+#     ["1,000", "1,100", '1,510'],
+#     ["1,410", "1,420", '1,790'],
+#     ["850", "900", '1,185'],
+# ]
+# columns = ["03/02", "03/03", "03/04"]
+# df = DataFrame(data=data, columns=columns)
+# # print(df)
+
+# def remove_comma(x):
+#     return int(x.replace(',', '')) # , 를 제거하고 정수형으로 변환
+
+# df['03/02'] = df['03/02'].map(remove_comma) # map 함수는 시리즈의 각 원소에 함수를 적용
+# df['03/03'] = df['03/03'].map(remove_comma)
+
+# print(df)
+
+# df = df.applymap(remove_comma) # applymap 함수는 전체 데이터의 연산 적용 
+# df = df.astype({'03/02': 'int32', '03/03': 'int32', '03/04': 'int32'}) # astype 으로 데이터 타입 변환
+# # print(df)
+# print(df.dtypes) #각 열의 데이터 타입 확인
+
+# from pandas import DataFrame
+
+# data = [
+#     {"cd":"A060310", "nm":"3S", "close":"2,920"},
+#     {"cd":"A095570", "nm":"AJ네트웍스", "close":"6,250"},
+#     {"cd":"A006840", "nm":"AK홀딩스", "close":"29,700"},
+#     {"cd":"A054620", "nm":"APS홀딩스", "close":"19,400"}
+# ]
+# df = DataFrame(data=data)
+# print(df)
+
+# df['cd'] = df['cd'].str[1:] # .str 로 문자열 내부 수정가능(해당코드는 1번째 문자부터 끝까지)
+# print(df)
+
+# df['close'] = df['close'].str.replace(',', '') # .str.replace 로 문자열 치환
+# df['close'] = df['close'].astype('int64') # astype 으로 데이터 타입 변환
+# print(df)
+
+# from pandas import DataFrame
+
+# data = [
+#     {"cd":"A060310", "nm":"3S", "open":2920, "close":2800},
+#     {"cd":"A095570", "nm":"AJ네트웍스", "open":1920, "close":1900},
+#     {"cd":"A006840", "nm":"AK홀딩스", "open":2020, "close":2010},
+#     {"cd":"A054620", "nm":"APS홀딩스", "open":3120, "close":3200}
+# ]
+# df = DataFrame(data=data)
+# df = df.set_index('cd')
+# # print(df)
+
+# cond = df['open'] >= 2000
+# print(df[cond])
+
+# # qurey 메서드는 해당 조건에 맞는 행을 반환
+# print(df.query("nm == '3S'")) # 조건을 주려면 그 대상에 작은 따옴표(')를 사용해야함
+
+# print(df.query("open > close"))
+
+# print(df.query("nm in ['3S', 'AK홀딩스']"))
+
+# print(df.query("cd == 'A060310'"))
+
+# name = "AJ네트웍스"
+# print(df.query('nm == @name')) # @ 를 사용해서 외부 변수를 사용할 수 있음
+
+
+# from pandas import DataFrame
+
+# data = [
+#     [1416, 1416, 2994, 1755],
+#     [6.42, 17.63, 21.09, 13.93],
+#     [1.10, 1.49, 2.06, 1.88]
+# ]
+
+# columns = ["2018/12", "2019/12", "2020/12", "2021/12(E)"]
+# index = ["DPS", "PER", "PBR"]
+
+# df = DataFrame(data=data, index=index, columns=columns)
+# print(df)
+
+# print(df.filter(items=["2018/12"]))
+
+# print(df.filter(items=["PER"], axis=0)) # axis=0 은 행(x축)을 의미, axis=1 은 열(y축)을 의미
+
+# print(df.filter(regex="2020")) # 정규식을 사용해서 2020 이 포함된 열을 찾고 싶을 때
+
+# print(df.filter(regex="R$", axis=0)) # 'r'로 끝나는 모든 행을 찾고 싶을 때
+
+# print(df.filter(regex="\d{4}")) # 4자리 숫자가 포함된 모든 열을 찾고 싶을 때
+
+# print(df.filter(regex="\d{4}/\d{2}$")) # '4자리 숫자/2자리 숫자'로 끝나는 모든 열을 찾고 싶을 때
+
+# from pandas import DataFrame
+
+# data = [
+#     ["037730", "3R", 1510],
+#     ["036360", "3SOFT", 1790],
+#     ["005670", "ACTS", 1185]
+# ]
+
+# columns = ["종목코드", "종목명", "현재가"]
+# df = DataFrame(data=data, columns=columns)
+# df.set_index("종목코드", inplace=True)
+# print(df)
+
+# print(df.sort_values("현재가")) # 오름차순 정렬
+# print(df.sort_values(by="현재가")) # by 파라미터를 사용해도 동일한 함수
+# print(df.sort_values("현재가", ascending=False)) # 내림차순 정렬
+
+# print(df['현재가'].rank()) # rank() 함수로 순위 출력
+# df['순위'] = df['현재가'].rank() # rank() 함수로 순위 열 추가
