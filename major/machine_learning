@@ -1,0 +1,70 @@
+# import pandas as pd 
+# from sklearn import datasets
+# from sklearn.model_selection import train_test_split
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn import metrics
+
+# iris = datasets.load_iris()
+# print(iris.data[0:5])
+# print(iris.target[0:5])
+
+# data = pd.DataFrame(
+# {'sepal length': iris.data[:, 0], 'sepal width': iris.data[:, 1],
+# 'petal length': iris.data[:, 2], 'petal width': iris.data[:, 3],
+# 'species': iris.target}
+# )
+# print(data.head())
+
+# x = data[['sepal length', 'sepal width', 'petal length', 'petal width']]
+# y = data['species']
+# print(x.head())
+# print(y.head())
+
+# x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
+# print(len(x_train))
+# print(len(x_test))
+# print(len(y_train))
+# print(len(y_test))
+
+# forest = RandomForestClassifier(n_estimators=100, max_features = 3)
+# # n_estimators : 생성할 tree의 개수, max_features : 최대 선택할 특성의 개수
+# forest.fit(x_train, y_train)
+
+# y_pred = forest.predict(x_test)
+# print(y_pred)
+# print(list(y_test))
+# print(metrics.accuracy_score(y_test, y_pred))
+
+# 데이터 가져오기
+# 데이터 train, test 분리
+# 모형 구축
+# 모형 성능 평가
+
+import seaborn as sns
+
+abalone = sns.load_dataset('abalone')
+print(abalone.head())
+
+########### 머신러닝 강의노트 2 ############
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+iris = sns.load_dataset('iris')
+print(iris.tail(6))
+
+input_var = iris[["sepal_length", "sepal_width", "petal_length", "petal_width"]]
+target_var = iris["species"]
+
+#Species 의 종류에 따른 산점도 출력(sepal_length 와 sepal_width 변수 사용)
+sns.scatterplot(x = "sepal_length", y = "sepal_width" , 
+                hue = "species", # species 별로 색상 구분
+                style = "species", # species 별로 점 모양 구분
+                s =100, # 점 크기 지정
+                data = iris)
+plt.show()
+
+from sklearn.preprocessing import StandardScaler
+ss = StandardScaler()
+ss.fit(input_var)
+input_scaled = ss.transform(input_var)
+print(input_scaled[:5,])
