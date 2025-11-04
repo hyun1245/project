@@ -197,3 +197,46 @@
 # print(temp.dropna().head())
 
 # print(df.resample('3D', offset='1D').apply(how)) 
+
+import pandas as pd
+
+data = {'삼성전자': [52200, 52300, 52900, 52000, 51700], 
+           'LG전자': [68200, 67800, 68800, 67500, 66300]}
+df = pd.DataFrame(data=data)
+# print(df.pct_change())
+
+# print(df / df.shift(2) - 1)
+
+# print(df.shift(1))
+# print(df.shift(2))
+
+# print(df.pct_change(periods=2)) # [df / df.shift(2) - 1]와 동일
+
+# yeild = df.pct_change(periods=2) + 1
+# print(yeild.cumprod())
+
+df = pd.read_excel("data/ss_ex_1.xlsx", index_col=0, usecols=[0, 1, 4])
+df.index = pd.to_datetime(df.index)
+df = df.sort_index()
+print(df.head())
+
+# 'q' : 데이터를 분기 말일 기준으로 그룹화
+df_quarter = df['시가'].resample('q').first().to_frame() 
+# print(df_quarter)
+
+# print(df['시가'].groupby(pd.Grouper(freq='q')).first().to_frame())
+
+df_quarter['quarter'] = df_quarter.index.quarter # 분기 정보 추가
+df['quarter'] = df.index.quarter
+# print(df.head())
+# print(df_quarter)
+
+df_daily = df[['종가', 'quarter']].reset_index()
+r = pd.merge(left=df_daily, right=df_quarter, on='quarter')
+# print(r)
+
+r['수익률'] = r['종가'] / r['시가']
+r = r.set_index(['quarter', '일자']) #quarter 별로 그룹화됨 
+# print(r)
+
+

@@ -112,12 +112,13 @@ import numpy as np
 # np.random.randint(46, size=(2, 5)) # 0~45 까지의 숫자중에서 2행 5열로 랜덤하게 추출
 # print(np.random.randint(46, size=(2, 5)))
 
-# a = np.arange(4) # 0~3 까지의 숫자를 1차원 배열로 생성
-# print("a = ",a) # a =  [0 1 2 3]
-# b = np.arange(4, 8) # 4~7 까지의 숫자를 1차원 배열로 생성
-# print("b = ",b) # b =  [4 5 6 7]
-# print("np.vstack([a,b}) =",np.vstack([a, b])) # 수직방향으로 쌓기
-# print("np.hstack([a,b}) = ",np.hstack([a, b])) # 수평방향으로 쌓기
+import numpy as np
+a = np.arange(4) # 0~3 까지의 숫자를 1차원 배열로 생성
+print("a = ",a) # a =  [0 1 2 3]
+b = np.arange(4, 8) # 4~7 까지의 숫자를 1차원 배열로 생성
+print("b = ",b) # b =  [4 5 6 7]
+print("np.vstack([a,b}) =",np.vstack([a, b])) # 수직방향으로 쌓기
+print("np.hstack([a,b}) = ",np.hstack([a, b])) # 수평방향으로 쌓기
 
 
 # gpt 의 작동 

@@ -10,3 +10,5 @@ df_iris = pd.DataFrame(iris)
 df_iris.iloc[:50, :]
 # species를 기준으로 그룹화후 기술통계량 산출 및 전치
 df_iris.groupby('species').describe().transpose()
+
+

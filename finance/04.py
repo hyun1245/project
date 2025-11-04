@@ -199,99 +199,67 @@ from pandas import DataFrame
 # df["괴리율"] = (df["목표가"] - df["현재가"]) / df['현재가']
 # # print(df)
 
-# from pandas import DataFrame
+from pandas import DataFrame
+import pandas as pd
 
-# data = [
-#     ["3R", 1510, 7.36],
-#     ["3SOFT", 1790, 1.65],
-#     ["ACTS", 1185, 1.28]
-# ]
+data = [
+    ["3R", 1510, 7.36],
+    ["3SOFT", 1790, 1.65],
+    ["ACTS", 1185, 1.28]
+]
 
-# index = ["037730", "036360", "005760"]
-# columns = ["종목명", "현재가", "등락률"]
-# df = DataFrame(data=data, index=index, columns=columns)
-# # print(df)
+index = ["037730", "036360", "005760"]
+columns = ["종목명", "현재가", "등락률"]
+df = DataFrame(data=data, index=index, columns=columns)
+# print(df)
 
-# from pandas import Series 
+from pandas import Series 
 
 # s = Series(data=["LG전자", 60000, 3.84], index=df.columns) # 행을 하나더 추가
 # df.loc["066570"] = s
-# # print(df)
+# print(df)
 
 # s = Series(data=["LG전자", 60000, 3.84], index=df.columns, name="066570") #name 으로 행이름 지정
-# # print(df.append(s))
-
-
-# from pandas import DataFrame
-
-# data = [
-#     ["3R", 1510, 7.36],
-#     ["3SOFT", 1790, 1.65],
-#     ["ACTS", 1185, 1.28]
-# ]
-
-# index = ["037730", "036360", "005760"]
-# columns = ["종목명", "현재가", "등락률"]
-# df = DataFrame(data=data, index=index, columns=columns)
+# new_df = pd.concat([df, s.to_frame().T]) # to_frame() 으로 DataFrame 으로 변환후 .T 로 전치
+# print(new_df)
 
 # new_df = df.drop("현재가", axis=1) # axis=1 은 열(y축)을 의미, axis=0 은 행(x축)을 의미
-# # print(df)
-# # print(new_df)
+# print(df)
+# print(new_df)
 
-# from pandas import DataFrame
-
-# data = [
-#     ["3R", 1510, 7.36],
-#     ["3SOFT", 1790, 1.65],
-#     ["ACTS", 1185, 1.28]
-# ]
-
-# index = ["037730", "036360", "005760"]
-# columns = ["종목명", "현재가", "등락률"]
-# df = DataFrame(data=data, index=index, columns=columns)
-
-# # print(df.columns)
-# # print(df.index)
+# print(df.columns)
+# print(df.index)
 
 # df.columns = ['name', 'close', 'fluctuation']
 # df.index.name = 'code'
-# # print(df)
+# print(df)
 
-# from pandas import DataFrame
-
-# data = [
-#     ["3R", 1510, 7.36],
-#     ["3SOFT", 1790, 1.65],
-#     ["ACTS", 1185, 1.28]
-# ]
-
-# index = ["037730", "036360", "005760"]
-# columns = ["종목명", "현재가", "등락률"]
-# df = DataFrame(data=data, index=index, columns=columns)
 # df.rename(columns={'종목명': 'code'}, inplace=True) #특정 열의 이름만 바꾸고 싶을때, inplace=True 로 원본에 반영
-# # print(df)
+# print(df)
 
-# from pandas import DataFrame
+from pandas import DataFrame
 
-# # "" 가 포함된것은 문자열로 지정
-# data = [
-#     ["1,000", "1,100", '1,510'],
-#     ["1,410", "1,420", '1,790'],
-#     ["850", "900", '1,185'],
-# ]
-# columns = ["03/02", "03/03", "03/04"]
-# df = DataFrame(data=data, columns=columns)
-# # print(df)
+# "" 가 포함된것은 문자열로 지정
+data = [
+    ["1,000", "1,100", '1,510'],
+    ["1,410", "1,420", '1,790'],
+    ["850", "900", '1,185'],
+]
+columns = ["03/02", "03/03", "03/04"]
+df = DataFrame(data=data, columns=columns)
+# print(df)
 
-# def remove_comma(x):
-#     return int(x.replace(',', '')) # , 를 제거하고 정수형으로 변환
+def remove_comma(x):
+    return int(x.replace(',', '')) # , 를 제거하고 정수형으로 변환
 
-# df['03/02'] = df['03/02'].map(remove_comma) # map 함수는 시리즈의 각 원소에 함수를 적용
-# df['03/03'] = df['03/03'].map(remove_comma)
+df['03/02'] = df['03/02'].map(remove_comma) # map 함수는 시리즈의 각 원소에 함수를 적용
+df['03/03'] = df['03/03'].map(remove_comma)
+df['03/04'] = df['03/04'].map(remove_comma)
 
 # print(df)
 
 # df = df.applymap(remove_comma) # applymap 함수는 전체 데이터의 연산 적용 
+# dictory 구조로 묶어 데이터 타입변경
 # df = df.astype({'03/02': 'int32', '03/03': 'int32', '03/04': 'int32'}) # astype 으로 데이터 타입 변환
 # # print(df)
 # print(df.dtypes) #각 열의 데이터 타입 확인
@@ -314,3 +282,5 @@ from pandas import DataFrame
 # df['close'] = df['close'].astype('int64') # astype 으로 데이터 타입 변환
 # print(df)
 
+import math
+math.sqrt((5-1)**2 -(10-7)**2)
